@@ -99,16 +99,6 @@ psa_status_t psa_crypto_init(void);
  * @{
  */
 
-/** \def PSA_KEY_ATTRIBUTES_INIT
- *
- * This macro returns a suitable initializer for a key attribute structure
- * of type #psa_key_attributes_t.
- */
-
-/** Return an initial value for a key attributes structure.
- */
-static psa_key_attributes_t psa_key_attributes_init(void);
-
 /** Declare a key as persistent and set its key identifier.
  *
  * If the attribute structure currently declares the key as volatile (which
@@ -931,16 +921,6 @@ psa_status_t psa_hash_compare(psa_algorithm_t alg,
  * Implementation details can change in future versions without notice. */
 typedef struct psa_hash_operation_s psa_hash_operation_t;
 
-/** \def PSA_HASH_OPERATION_INIT
- *
- * This macro returns a suitable initializer for a hash operation object
- * of type #psa_hash_operation_t.
- */
-
-/** Return an initial value for a hash operation object.
- */
-static psa_hash_operation_t psa_hash_operation_init(void);
-
 /** Set up a multipart hash operation.
  *
  * The sequence of operations to calculate a hash (message digest)
@@ -1289,16 +1269,6 @@ psa_status_t psa_mac_verify(mbedtls_svc_key_id_t key,
  * make any assumptions about the content of this structure.
  * Implementation details can change in future versions without notice. */
 typedef struct psa_mac_operation_s psa_mac_operation_t;
-
-/** \def PSA_MAC_OPERATION_INIT
- *
- * This macro returns a suitable initializer for a MAC operation object of type
- * #psa_mac_operation_t.
- */
-
-/** Return an initial value for a MAC operation object.
- */
-static psa_mac_operation_t psa_mac_operation_init(void);
 
 /** Set up a multipart MAC calculation operation.
  *
@@ -1702,16 +1672,6 @@ psa_status_t psa_cipher_decrypt(mbedtls_svc_key_id_t key,
  * make any assumptions about the content of this structure.
  * Implementation details can change in future versions without notice. */
 typedef struct psa_cipher_operation_s psa_cipher_operation_t;
-
-/** \def PSA_CIPHER_OPERATION_INIT
- *
- * This macro returns a suitable initializer for a cipher operation object of
- * type #psa_cipher_operation_t.
- */
-
-/** Return an initial value for a cipher operation object.
- */
-static psa_cipher_operation_t psa_cipher_operation_init(void);
 
 /** Set the key for a multipart symmetric encryption operation.
  *
@@ -2220,16 +2180,6 @@ psa_status_t psa_aead_decrypt(mbedtls_svc_key_id_t key,
  * make any assumptions about the content of this structure.
  * Implementation details can change in future versions without notice. */
 typedef struct psa_aead_operation_s psa_aead_operation_t;
-
-/** \def PSA_AEAD_OPERATION_INIT
- *
- * This macro returns a suitable initializer for an AEAD operation object of
- * type #psa_aead_operation_t.
- */
-
-/** Return an initial value for an AEAD operation object.
- */
-static psa_aead_operation_t psa_aead_operation_init(void);
 
 /** Set the key for a multipart authenticated encryption operation.
  *
@@ -3207,16 +3157,6 @@ psa_status_t psa_asymmetric_decrypt(mbedtls_svc_key_id_t key,
  * Implementation details can change in future versions without notice.
  */
 typedef struct psa_key_derivation_s psa_key_derivation_operation_t;
-
-/** \def PSA_KEY_DERIVATION_OPERATION_INIT
- *
- * This macro returns a suitable initializer for a key derivation operation
- * object of type #psa_key_derivation_operation_t.
- */
-
-/** Return an initial value for a key derivation operation object.
- */
-static psa_key_derivation_operation_t psa_key_derivation_operation_init(void);
 
 /** Set up a key derivation operation.
  *
@@ -4973,5 +4913,78 @@ psa_status_t psa_verify_hash_abort(
 /* The file "crypto_extra.h" contains vendor-specific definitions. This
  * can include vendor-defined algorithms, extra functions, etc. */
 #include "crypto_extra.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+ * As per issue 7087 in in Mbed-TLS repository, the following macros are
+ * relocated to avoid C/C++ linkeage problem when building for <VS2019.
+*/
+
+/** \def PSA_KEY_ATTRIBUTES_INIT
+ *
+ * This macro returns a suitable initializer for a key attribute structure
+ * of type #psa_key_attributes_t.
+ */
+
+/** Return an initial value for a key attributes structure.
+ */
+static psa_key_attributes_t psa_key_attributes_init(void);
+
+/** \def PSA_HASH_OPERATION_INIT
+ *
+ * This macro returns a suitable initializer for a hash operation object
+ * of type #psa_hash_operation_t.
+ */
+
+/** Return an initial value for a hash operation object.
+ */
+static psa_hash_operation_t psa_hash_operation_init(void);
+
+/** \def PSA_MAC_OPERATION_INIT
+ *
+ * This macro returns a suitable initializer for a MAC operation object of type
+ * #psa_mac_operation_t.
+ */
+
+/** Return an initial value for a MAC operation object.
+ */
+static psa_mac_operation_t psa_mac_operation_init(void);
+
+/** \def PSA_CIPHER_OPERATION_INIT
+ *
+ * This macro returns a suitable initializer for a cipher operation object of
+ * type #psa_cipher_operation_t.
+ */
+
+/** Return an initial value for a cipher operation object.
+ */
+static psa_cipher_operation_t psa_cipher_operation_init(void);
+
+/** \def PSA_AEAD_OPERATION_INIT
+ *
+ * This macro returns a suitable initializer for an AEAD operation object of
+ * type #psa_aead_operation_t.
+ */
+
+/** Return an initial value for an AEAD operation object.
+ */
+static psa_aead_operation_t psa_aead_operation_init(void);
+
+/** \def PSA_KEY_DERIVATION_OPERATION_INIT
+ *
+ * This macro returns a suitable initializer for a key derivation operation
+ * object of type #psa_key_derivation_operation_t.
+ */
+
+/** Return an initial value for a key derivation operation object.
+ */
+static psa_key_derivation_operation_t psa_key_derivation_operation_init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* PSA_CRYPTO_H */
