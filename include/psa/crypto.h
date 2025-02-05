@@ -4919,8 +4919,10 @@ extern "C" {
 #endif
 
 /*
- * As per issue 7087 in in Mbed-TLS repository, the following macros are
- * relocated to avoid C/C++ linkeage problem when building for <VS2019.
+ * As per issue 7087 in Mbed-TLS repository, the following function declarations
+ * are relocated to avoid C/C++ linkeage problem when building for <VS2019. Also,
+ * function definitions are moved here (note that adding custom behavior through 
+ * MBEDTLS_PSA_CRYPTO_STRUCT_FILE is not possible).
 */
 
 /** \def PSA_KEY_ATTRIBUTES_INIT
@@ -4931,7 +4933,11 @@ extern "C" {
 
 /** Return an initial value for a key attributes structure.
  */
-static psa_key_attributes_t psa_key_attributes_init(void);
+static inline psa_key_attributes_t psa_key_attributes_init(void)
+{
+    const struct psa_key_attributes_s v = PSA_KEY_ATTRIBUTES_INIT;
+    return v;
+}
 
 /** \def PSA_HASH_OPERATION_INIT
  *
@@ -4941,7 +4947,11 @@ static psa_key_attributes_t psa_key_attributes_init(void);
 
 /** Return an initial value for a hash operation object.
  */
-static psa_hash_operation_t psa_hash_operation_init(void);
+static inline psa_hash_operation_t psa_hash_operation_init(void)
+{
+    const struct psa_hash_operation_s v = PSA_HASH_OPERATION_INIT;
+    return v;
+}
 
 /** \def PSA_MAC_OPERATION_INIT
  *
@@ -4951,7 +4961,11 @@ static psa_hash_operation_t psa_hash_operation_init(void);
 
 /** Return an initial value for a MAC operation object.
  */
-static psa_mac_operation_t psa_mac_operation_init(void);
+static inline psa_mac_operation_t psa_mac_operation_init(void)
+{
+    const struct psa_mac_operation_s v = PSA_MAC_OPERATION_INIT;
+    return v;
+}
 
 /** \def PSA_CIPHER_OPERATION_INIT
  *
@@ -4961,7 +4975,11 @@ static psa_mac_operation_t psa_mac_operation_init(void);
 
 /** Return an initial value for a cipher operation object.
  */
-static psa_cipher_operation_t psa_cipher_operation_init(void);
+static inline psa_cipher_operation_t psa_cipher_operation_init(void);
+{
+    const struct psa_cipher_operation_s v = PSA_CIPHER_OPERATION_INIT;
+    return v;
+}
 
 /** \def PSA_AEAD_OPERATION_INIT
  *
@@ -4971,7 +4989,11 @@ static psa_cipher_operation_t psa_cipher_operation_init(void);
 
 /** Return an initial value for an AEAD operation object.
  */
-static psa_aead_operation_t psa_aead_operation_init(void);
+static inline psa_aead_operation_t psa_aead_operation_init(void);
+{
+    const struct psa_aead_operation_s v = PSA_AEAD_OPERATION_INIT;
+    return v;
+}
 
 /** \def PSA_KEY_DERIVATION_OPERATION_INIT
  *
@@ -4981,7 +5003,11 @@ static psa_aead_operation_t psa_aead_operation_init(void);
 
 /** Return an initial value for a key derivation operation object.
  */
-static psa_key_derivation_operation_t psa_key_derivation_operation_init(void);
+static inline psa_key_derivation_operation_t psa_key_derivation_operation_init(void)
+{
+    const struct psa_key_derivation_s v = PSA_KEY_DERIVATION_OPERATION_INIT;
+    return v;
+}
 
 #ifdef __cplusplus
 }

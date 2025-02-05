@@ -118,11 +118,6 @@ struct psa_cipher_operation_s {
 #else
 #define PSA_CIPHER_OPERATION_INIT { 0, 0, 0, 0, { 0 } }
 #endif
-static inline struct psa_cipher_operation_s psa_cipher_operation_init(void)
-{
-    const struct psa_cipher_operation_s v = PSA_CIPHER_OPERATION_INIT;
-    return v;
-}
 
 /* Include the context definition for the compiled-in drivers for the composite
  * algorithms. */
@@ -151,10 +146,6 @@ struct psa_mac_operation_s {
 #define PSA_MAC_OPERATION_INIT { 0, 0, 0, { 0 } }
 #endif
 static inline struct psa_mac_operation_s psa_mac_operation_init(void)
-{
-    const struct psa_mac_operation_s v = PSA_MAC_OPERATION_INIT;
-    return v;
-}
 
 struct psa_aead_operation_s {
 #if defined(MBEDTLS_PSA_CRYPTO_CLIENT) && !defined(MBEDTLS_PSA_CRYPTO_C)
@@ -189,11 +180,6 @@ struct psa_aead_operation_s {
 #else
 #define PSA_AEAD_OPERATION_INIT { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, { 0 } }
 #endif
-static inline struct psa_aead_operation_s psa_aead_operation_init(void)
-{
-    const struct psa_aead_operation_s v = PSA_AEAD_OPERATION_INIT;
-    return v;
-}
 
 /* Include the context definition for the compiled-in drivers for the key
  * derivation algorithms. */
@@ -216,12 +202,6 @@ struct psa_key_derivation_s {
 /* This only zeroes out the first byte in the union, the rest is unspecified. */
 #define PSA_KEY_DERIVATION_OPERATION_INIT { 0, 0, 0, { 0 } }
 #endif
-static inline struct psa_key_derivation_s psa_key_derivation_operation_init(
-    void)
-{
-    const struct psa_key_derivation_s v = PSA_KEY_DERIVATION_OPERATION_INIT;
-    return v;
-}
 
 struct psa_custom_key_parameters_s {
     /* Future versions may add other fields in this structure. */
@@ -325,12 +305,6 @@ struct psa_key_attributes_s {
                                       PSA_KEY_LIFETIME_VOLATILE,       \
                                       PSA_KEY_POLICY_INIT,             \
                                       MBEDTLS_SVC_KEY_ID_INIT }
-
-static inline struct psa_key_attributes_s psa_key_attributes_init(void)
-{
-    const struct psa_key_attributes_s v = PSA_KEY_ATTRIBUTES_INIT;
-    return v;
-}
 
 static inline void psa_set_key_id(psa_key_attributes_t *attributes,
                                   mbedtls_svc_key_id_t key)
