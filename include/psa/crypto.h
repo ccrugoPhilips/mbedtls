@@ -4975,7 +4975,7 @@ static inline psa_mac_operation_t psa_mac_operation_init(void)
 
 /** Return an initial value for a cipher operation object.
  */
-static inline psa_cipher_operation_t psa_cipher_operation_init(void);
+static inline psa_cipher_operation_t psa_cipher_operation_init(void)
 {
     const struct psa_cipher_operation_s v = PSA_CIPHER_OPERATION_INIT;
     return v;
@@ -4989,7 +4989,7 @@ static inline psa_cipher_operation_t psa_cipher_operation_init(void);
 
 /** Return an initial value for an AEAD operation object.
  */
-static inline psa_aead_operation_t psa_aead_operation_init(void);
+static inline psa_aead_operation_t psa_aead_operation_init(void)
 {
     const struct psa_aead_operation_s v = PSA_AEAD_OPERATION_INIT;
     return v;

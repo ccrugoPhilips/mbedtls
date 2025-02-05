@@ -86,11 +86,6 @@ struct psa_hash_operation_s {
 #else
 #define PSA_HASH_OPERATION_INIT { 0, { 0 } }
 #endif
-static inline struct psa_hash_operation_s psa_hash_operation_init(void)
-{
-    const struct psa_hash_operation_s v = PSA_HASH_OPERATION_INIT;
-    return v;
-}
 
 struct psa_cipher_operation_s {
 #if defined(MBEDTLS_PSA_CRYPTO_CLIENT) && !defined(MBEDTLS_PSA_CRYPTO_C)
@@ -145,7 +140,6 @@ struct psa_mac_operation_s {
 #else
 #define PSA_MAC_OPERATION_INIT { 0, 0, 0, { 0 } }
 #endif
-static inline struct psa_mac_operation_s psa_mac_operation_init(void)
 
 struct psa_aead_operation_s {
 #if defined(MBEDTLS_PSA_CRYPTO_CLIENT) && !defined(MBEDTLS_PSA_CRYPTO_C)
