@@ -4986,7 +4986,7 @@ extern "C" {
 
 /** Return an initial value for a key attributes structure.
  */
-static psa_key_attributes_t psa_key_attributes_init(void)
+static inline psa_key_attributes_t psa_key_attributes_init(void)
 {
     psa_key_attributes_t attributes;
     psa_key_attributes_init_internal(&attributes);
@@ -5001,7 +5001,7 @@ static psa_key_attributes_t psa_key_attributes_init(void)
 
 /** Return an initial value for a hash operation object.
  */
-static psa_hash_operation_t psa_hash_operation_init(void)
+static inline psa_hash_operation_t psa_hash_operation_init(void)
 {
     psa_hash_operation_t operation;
     psa_hash_operation_init_internal(&operation);
@@ -5016,7 +5016,7 @@ static psa_hash_operation_t psa_hash_operation_init(void)
 
 /** Return an initial value for a MAC operation object.
  */
-static psa_mac_operation_t psa_mac_operation_init(void)
+static inline psa_mac_operation_t psa_mac_operation_init(void)
 {
     psa_mac_operation_t operation;
     psa_mac_operation_init_internal(&operation);
@@ -5031,7 +5031,7 @@ static psa_mac_operation_t psa_mac_operation_init(void)
 
 /** Return an initial value for a cipher operation object.
  */
-static psa_cipher_operation_t psa_cipher_operation_init(void)
+static inline psa_cipher_operation_t psa_cipher_operation_init(void)
 {
     psa_cipher_operation_t operation;
     psa_cipher_operation_init_internal(&operation);
@@ -5046,7 +5046,7 @@ static psa_cipher_operation_t psa_cipher_operation_init(void)
 
 /** Return an initial value for an AEAD operation object.
  */
-static psa_aead_operation_t psa_aead_operation_init(void)
+static inline psa_aead_operation_t psa_aead_operation_init(void)
 {
     psa_aead_operation_t operation;
     psa_aead_operation_init_internal(&operation);
@@ -5061,7 +5061,7 @@ static psa_aead_operation_t psa_aead_operation_init(void)
 
 /** Return an initial value for a key derivation operation object.
  */
-static psa_key_derivation_operation_t psa_key_derivation_operation_init(void)
+static inline psa_key_derivation_operation_t psa_key_derivation_operation_init(void)
 {
     psa_key_derivation_operation_t operation;
     psa_key_derivation_operation_init_internal(&operation);
